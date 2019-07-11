@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<body>
+   <div th:fragment="footer">
+	   
+	    <script>
+	        Chart.defaults.global.defaultFontColor = 'white';
+	        let ctxLine,
+	            ctxBar,
+	            ctxPie,
+	            optionsLine,
+	            optionsBar,
+	            optionsPie,
+	            configLine,
+	            configBar,
+	            configPie,
+	            lineChart;
+	        barChart, pieChart;
+	        // DOM is ready
+	        $(function () {
+	            drawLineChart(); // Line Chart
+	            drawBarChart(); // Bar Chart
+	            drawPieChart(); // Pie Chart
+	
+	            $(window).resize(function () {
+	                updateLineChart();
+	                updateBarChart();                
+	            });
+	        })
+   	 </script>
+   	 <script th:src="@{/js/paginatorOrder.js}"></script>
+   </div>
+</body>
+</html>

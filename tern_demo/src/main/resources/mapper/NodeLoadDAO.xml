@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tern.block.demo.dao.NodeLoadDAO">
+
+    <!--节点登录 -->
+    <select id="loginNode" resultType="tern.block.core.dto.Node" parameterType="map">
+        select * from node_info where node_email=#{loginEmail} 
+    </select>
+    
+
+    <!-- 获取所有邮箱信息 -->
+    <select id="vaildNodeEmail" resultType="map">
+        select node_email from node_info
+    </select>
+    
+    <!-- 获取节点登录状态 -->
+    <select id="getNodeState" resultType="int" parameterType="String">
+        select node_state from node_info where node_email=#{nodeEmail};
+    </select>
+    
+    <!-- 获取节点密码输入次数 -->
+    <select id="getNodeBlockNum" resultType="int" parameterType="String">
+        select node_block_num from node_info where node_email=#{nodeEmail};
+    </select>
+    
+    <!-- 更新节点密码输入次数 -->
+    <update id="updateBlockNum" parameterType="map">
+        update node_info set node_block_num = #{num} where node_email=#{nodeEmail};
+    </update>
+    
+    <!-- 更新节点状态 -->
+    <update id="updateNodeState" parameterType="map">
+        update node_info set node_block_num = #{state} where node_email=#{nodeEmail};
+    </update>
+    
+    <!-- 获取所有节点信息 -->
+    <select id="getAllNodeInfo" resultType="tern.block.core.dto.Node">
+         select *  from node_info 
+    </select>
+    
+</mapper>

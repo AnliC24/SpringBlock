@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tern.block.demo.dao.RegistryDAO">
+  <!-- 节点注册 -->
+  <sql id="addNode">node_name,node_sex,node_password,node_email,node_telphone,node_registry_time,node_competence,node_state,node_block_num</sql>
+  <!-- 检查对应邮箱是否存在 
+     1.这里可能会出现错误,当查询出数据库内的邮箱大于2的时候,这里会报格式转换异常
+  -->
+  <select id="checkMailInfo" resultType="String" parameterType="String">
+    select  node_email from node_info where node_email = #{email}
+  </select>
+  
+  
+    <!-- 节点注册 -->
+    <insert id="registryNode" parameterType="NodeDTO" flushCache="true">
+         insert into node_info(<include refid="addNode"></include>) values(#{nodeName},#{nodeSex},#{nodePassword},#{nodeEmail},#{nodeTelphone},#{nodeRegistryTime},#{nodeCompetence},#{nodeState},#{nodeBlockNum});
+    </insert>
+    
+    <!-- 节点注册成功后,注入节点公钥信息 -->
+    <update id="updatePubNode" parameterType="map">
+        update  node_info
+        <set>
+            <if test="pubKeyNode!=null">node_pub_key=#{pubKeyNode}</if>
+        </set>
+        where node_email=#{node_email}
+    </update>
+    
+    <!-- 公钥读取失败后,删除已存入的节点信息 -->
+    <delete id="deleteExistsNode" parameterType="string">
+       delete from node_info where node_email = #{nodeEmail}
+    </delete>
+    
+    <!-- 手机号码重复性检查 -->
+    <select id="checkTelphone" resultType="String" parameterType="String" >
+        select  node_telphone from node_info where node_telphone = #{tel}
+    </select>
+</mapper>

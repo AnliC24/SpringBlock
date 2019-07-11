@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>			
+ <div th:replace="Order/header::header"></div>
+</head>
+<body>
+    <h1>交易信息</h1>
+
+	<div class="container w3layouts agileits">
+    <form th:action="@{/order/savaOrder}" method="post"  class="form-horizontal">
+		<div class="login w3layouts agileits">
+			<h2>寄件人信息</h2>
+			
+				<input type="text" Name="sendNodeName" placeholder="寄件姓名" required="">
+				<input type="text" Name="sendNodeTelphone" placeholder="联系电话" required="">
+				<input type="text" Name="sendNodeEmail" placeholder="注册邮箱" required="">
+				<input type="text" Name="sendNodeProduct" placeholder="寄件物品" required="">
+				<input type="text" Name="sendNodeAddress" placeholder="寄件地址" required="">
+				
+		
+		
+			<div class="clear"></div>
+		</div>
+		<div class="register w3layouts agileits">
+			<h2>收件人信息</h2>
+			
+				<input type="text" Name="receiveNodeName" placeholder="收件姓名" required="">
+				<input type="text" Name="receiveNodeTelphone" placeholder="联系电话" required="">
+				<input type="text" Name="receiveNodeEmail" placeholder="注册邮箱" required="">
+				<input type="text" Name="recevieNodeAddress" placeholder="收件地址" required="">
+			    <input type="text" Name="recevieNodepickTime" placeholder="收件时间" required="">
+			<div class="clear"></div>
+		</div>
+		
+		<div  role="alert"  th:if="${errorMsg} " th:text="${errorMsg}" style="color:red" ></div>
+
+		<div class="clear"></div>
+		<div class="send-button w3layouts agileits">
+					<input type="submit" value="提交订单">
+		</div>
+  </form>
+	</div>
+    <div th:replace="Register/footer::footer"></div>
+</body>
+</html>

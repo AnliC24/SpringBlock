@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+     <link
+      rel="stylesheet"
+      th:href="@{https://fonts.googleapis.com/css?family=Roboto:400,700}"
+    />
+    <!-- https://fonts.google.com/specimen/Roboto -->
+    <link rel="stylesheet" th:href="@{/css/superIndex/fontawesome.min.css}" />
+    <!-- https://fontawesome.com/ -->
+    <link rel="stylesheet" th:href="@{/css/superIndex/bootstrap.min.css}" />
+    <!-- https://getbootstrap.com/ -->
+    <link rel="stylesheet" th:href="@{/css/superIndex/templatemo-style.css}">
+    <script th:src="@{/js/bootstrap-paginator.js}"></script>
+    <title>Product</title>
+  </head>
+<body id="reportsPage">
+    <nav class="navbar navbar-expand-xl">
+      <div class="container h-100">
+        <a class="navbar-brand" href="index.html">
+          <h1 class="tm-site-title mb-0">联盟治理平台</h1>
+        </a>
+        <button
+          class="navbar-toggler ml-auto mr-0"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fas fa-bars tm-nav-icon"></i>
+        </button>
+
+     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto h-100">
+                        <li class="nav-item">
+                            <a class="nav-link active" th:href="@{/superIndex}">
+                                <i class="fas fa-tachometer-alt"></i>
+                                                           交易中心
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <i class="far fa-file-alt"></i>
+                                <span>
+                                                          统计服务 <i class="fas fa-angle-down"></i>
+                                </span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">联盟交易</a>
+                                <a class="dropdown-item" href="#">联盟节点</a>
+                                <a class="dropdown-item" href="#">联盟账本</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/order/validOrder}">
+                                <i class="fas fa-shopping-cart"></i>
+                                                            订单服务
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="accounts.html">
+                                <i class="far fa-user"></i>
+                                                           节点服务
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-cog"></i>
+                                <span>
+                                                             其他服务 <i class="fas fa-angle-down"></i>
+                                </span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">系统公私钥</a>
+                                <a class="dropdown-item" href="#">系统日志</a>
+                                <a class="dropdown-item" href="#">服务日志</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <div class="row">
+                          <div class="col">
+                             <p class="text-white mt-5 mb-5">欢迎回来, <b th:text="${session.node.nodeName}"></b></p>
+                          </div>
+                         </div>
+                        <li class="nav-item">
+                            <a class="nav-link d-block" href="login.html">
+                               <a th:href="@{/logout}">登出</a>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+      </div>
+    </nav>     
+    <div class="container mt-5">
+      <div class="row tm-content-row">
+        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col">
+          <div class="tm-bg-primary-dark tm-block tm-block-products">
+            <div class="tm-product-table-container">
+              <table class="table table-hover tm-table-small tm-product-table">
+                <thead>
+                  <tr>
+                    <th scope="col">&nbsp;</th>
+                    <th scope="col">流水号</th>
+                    <th scope="col">发起节点</th> 
+                    <th scope="col">物件</th>
+                    <th scope="col">接收节点</th>
+                    <th scope="col">接收地址</th>
+                    <th scope="col">交易时间</th>
+                    <th scope="col">&nbsp;</th>
+                  </tr>
+                </thead>
+                <tbody id="allOrderInfo">
+                 
+                </tbody>
+              </table>
+               <!--  <el-col>
+                 <div><h3 id="totalPageSize"></h3></div>
+               </el-col>-->
+            </div>
+            <!-- table container -->
+           <!--   <a
+              th:href="@{/order/addProduct}"
+              class="btn btn-primary btn-block text-uppercase mb-3">交易广播</a>-->
+            <!--<button class="btn btn-primary btn-block text-uppercase">
+                             确认交易信息
+            </button>-->
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 tm-block-col">
+          <div class="tm-bg-primary-dark tm-block tm-block-product-categories">
+            <h2 class="tm-block-title">在线节点</h2>
+            <div class="tm-product-table-container">
+              <table class="table tm-table-small tm-product-table">
+                <tbody id="allNodeOnline">
+                  
+                </tbody>
+              </table>
+            </div>
+            <!-- table container -->
+            <button class="btn btn-primary btn-block text-uppercase mb-3">
+                                节点通信
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="tm-footer row tm-mt-small">
+      <div class="col-12 font-weight-light">
+        <p class="text-center text-white mb-0 px-4 small">
+          Copyright &copy; <b>2018</b> All rights reserved. 
+          
+          More Templates <a href="http://www.cssmoban.com/" target="_blank" title="联盟之家">交易治理平台</a> - Collect from <a href="http://www.cssmoban.com/" title="联盟" target="_blank">联盟之家</a>
+        </p>
+      </div>
+    </footer>
+
+    <script th:src="@{/js/superIndex/jquery-3.3.1.min.js}"></script>
+    <!-- https://jquery.com/download/ -->
+    <script th:src="@{/js/superIndex/bootstrap.min.js}"></script>
+    <!-- https://getbootstrap.com/ -->
+    <script>
+      $(function() {
+        $(".tm-product-name").on("click", function() {
+          window.location.href = "edit-product.html";
+        });
+      });
+    </script>
+    <script th:src="@{/js/paginatorProductOrder.js}"></script>
+  </body>
+</html>

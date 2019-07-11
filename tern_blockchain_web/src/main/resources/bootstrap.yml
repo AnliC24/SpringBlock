@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: tern-config
+      profile: dev
+  application:
+    name: tern-blockchain-web
+eureka:
+  client:
+    service-url:
+      defaultZone: http://106.14.211.161:8771/eureka/

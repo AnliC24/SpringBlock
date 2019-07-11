@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: tern-server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8771/eureka/
+    register-with-eureka: false
+  server:
+    enable-self-preservation: false
+server:
+  port: 8771

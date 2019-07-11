@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: tern-demo
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: tern-config
+      profile: dev
+eureka:
+  client:
+    service-url:
+      defaultZone: http://106.14.211.161:8771/eureka/
+

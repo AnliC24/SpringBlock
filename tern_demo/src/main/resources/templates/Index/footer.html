@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<body>
+    <div th:fragment="footer">
+    
+    <!-- js -->
+	<script  th:src="@{/js/index/jquery-2.1.4.min.js}"></script>
+	<!-- for bootstrap working -->
+	<script th:src="@{/js/bootstrap.js}" ></script>
+	<!-- //for bootstrap working -->
+<!-- //js -->
+<!-- //here starts scrolling icon -->
+<script th:src="@{/js/index/SmoothScroll.min.js}"></script>
+	<script  th:src="@{/js/index/move-top.js}"></script>
+	<script  th:src="@{/js/index/easing.js}"></script>
+	<!-- here stars scrolling script -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>
+	<!-- //here ends scrolling script -->
+<!-- //here ends scrolling icon -->
+
+<!-- scrolling script -->
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script> 
+<!-- //scrolling script -->
+
+<!-- FlexSlider-JavaScript -->
+	<script defer th:src="@{/js/index/jquery.flexslider.js}" ></script>
+	<!--  <script type="text/javascript">
+		$(function(){
+			SyntaxHighlighter.all();
+				});
+				$(window).load(function(){
+				$('.flexslider').flexslider({
+					animation: "slide",
+					start: function(slider){
+						$('body').removeClass('loading');
+					}
+			});
+		});
+	</script>-->
+<!-- //FlexSlider-JavaScript -->
+
+<!-- typer js--><!-- For banner text -->
+<script th:src="@{/js/index/jquery.typer.js}" ></script>
+	<script>
+						var win = $(window),
+							foo = $('#typer');
+
+						foo.typer(['Trucking and Freight Transport', 'YOUR NAVIGATOR IN THE TRADE WORLD', 'QUALITY SERVICE AFFORDABLE PRICE']);
+
+						// unneeded...
+						win.resize(function(){
+							var fontSize = Math.max(Math.min(win.width() / (1 * 10), parseFloat(Number.POSITIVE_INFINITY)), parseFloat(Number.NEGATIVE_INFINITY));
+
+							foo.css({
+								fontSize: fontSize * .8 + 'px'
+							});
+						}).resize();
+					</script>
+<!-- //typer js--><!-- //For banner text -->
+
+<!-- stats -->
+	<script th:src="@{/js/index/jquery.waypoints.min.js}" ></script>
+	<script th:src="@{/js/index/jquery.countup.js}" ></script>
+		<script>
+			$('.counter').countUp();
+		</script>
+<!-- //stats -->
+    </div>
+</body>
+</html>

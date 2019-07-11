@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <div th:replace="Error/header::header"></div>
+    <title>异常页面</title>
+</head>
+<body>
+    
+   
+    <div class="container">
+      
+          <div class="row pad-top text-center">
+                 <div class="col-md-6 col-md-offset-3 text-center">
+                  <h1>  你想做什么呢? </h1>
+                   <h5> 无法访问到任何资源</h5> 
+              <span id="error-link"></span>
+                     <h2>! 请重新访问 !</h2>
+                     <h2>! 请查看是否节点登录 !</h2>
+                     <h2>! 请联系管理员 !</h2>
+</div>
+        </div>
+
+            <div class="row text-center">
+                 <div class="col-md-8 col-md-offset-2">
+                     
+                     <h3> <i  class="fa fa-lightbulb-o fa-5x"></i> </h3>
+               <a href="index" class="btn btn-primary">回到首页</a> 
+             <br/><br/>More Templates <a th:href="@{http://www.cssmoban.com/}" target="_blank" title="联盟之家">交易治理平台</a> - Collect from <a href="http://www.cssmoban.com/" title="联盟" target="_blank">联盟之家</a>
+</div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+  
+  
+   <div th:replace="Error/footer::footer"></div>
+</body>
+</html>

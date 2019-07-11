@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tern.block.demo.dao.OrderDAO">
+
+    <!-- 节点订单 -->
+    <sql id="addOrder">send_id,order_info_send,order_info_recevie,order_info_time,order_id_state,order_id_vaild</sql>
+    <!-- 订单信息存储 -->
+    <insert id="orderSave" parameterType="OrderDTO" flushCache="true">
+         insert into node_order(<include refid="addOrder"></include>) values(#{sendId},#{orderInfoSend},#{orderInfoRecevie},#{orderInfoTime},#{orderIdState},#{orderIdVaild});
+    </insert>
+    
+    <!-- 获取订单信息 根据id-->
+    <select id="getOrderById" resultType="tern.block.core.orderDTO.Order" parameterType="int">
+      select * from node_order where order_id = #{id}
+    </select>
+    
+    
+    <!-- 获取所有订单信息 -->
+    <select id="getOrderAll" resultType="tern.block.core.orderDTO.Order">
+        select * from node_order where order_id_state = 0
+    </select>
+    
+    <!-- 确认订单信息 -->
+    <update id="updateOrder"  parameterType="map">
+       update  node_order
+        <set>
+            <if test="state!=null">order_id_state=#{state}</if>
+        </set>
+        where order_id=#{id}
+    </update>
+    
+    <!-- 获取交易节点对象邮箱 -->
+    <select id="getEmailBySendId" resultType="string" parameterType="string">
+         select node_email from node_info where node_id = #{sendID}
+    </select>
+</mapper>

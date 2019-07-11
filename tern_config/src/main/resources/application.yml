@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: tern-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/AnliC24/SpringCloud-blockChain
+          username: AnliC24
+          password: wcf0424...
+          basedir:  E:/SpringSecurity/Config
+            
+eureka:
+  client:
+    service-url:
+      defaultZone: http://106.14.211.161:8771/eureka/
+server:
+  port: 8772
+  
+
+
+  

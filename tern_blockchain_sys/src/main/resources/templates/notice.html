@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>节点注册提醒模板</title>
+</head>
+<body>
+    你好,感谢你的注册,这是一封通知邮件。</br>
+        温馨提醒:</br>请保管好你的私钥,这世界独有的一份。无法追回。
+    <a href="#" th:href="@{http://www.ityouknow.com/register/{id}(id=${id})}">激活节点</a>
+</body>
+</html>
